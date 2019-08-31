@@ -7,8 +7,10 @@ class setTable extends React.Component{
 
     render(){
         return(
-            <View>
-                <StatusBar  backgroundColor="#487eb0" barStyle="light-content"/>
+            <ScrollView>
+             
+            
+            <StatusBar  backgroundColor="#487eb0" barStyle="light-content"/>
             <View  style={{backgroundColor: '#40739e', height: 30, flexDirection: 'row', alignItems: 'space-between'}}>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 10, fontSize:20}}>#10</Text>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 90 , fontSize:20}}>Kedai Santuy</Text>
@@ -19,24 +21,35 @@ class setTable extends React.Component{
 
             {/* //Menu */}
             <ScrollView horizontal={true}>
+            
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Promo</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Appertizer</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Main Course</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Dessert</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Addition</Text>
+            </TouchableOpacity> 
 
+            <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Drink</Text>
+            </TouchableOpacity>
             </ScrollView>
+            
 
             </View>
 
-
-        
-            <ScrollView>
              <View style={styles.container}>
 
              <View style={styles.content}>
@@ -83,21 +96,21 @@ class setTable extends React.Component{
 
              </TouchableOpacity>
              </View>
+            
 
              </View>
 
+             <View  style={{backgroundColor: '#487eb0', height: 100, flexDirection: 'row', alignItems: 'space-between'}}>
 
-            <View  style={{backgroundColor: '#487eb0', height: 60, flexDirection: 'row', alignItems: 'space-between'}}>
+             {/* Orderlist */}
+                <View style={{backgroundColor: '#FFF', height: 75, width: '45%', borderRadius: 2, position: 'absolute', marginVertical:10, marginLeft: 15}}>
+                </View>
+
+                <View style={{marginLeft:'55%', marginVertical: '14%', border}}><Text style={{color: 'white'}}>Konfirmasi</Text></View>
 
             </View>
-
-             </ScrollView>
-             </View>
-        
-
              
-
-            
+             </ScrollView>
         )
     }
 }
@@ -125,7 +138,7 @@ const styles = StyleSheet.create({
     scrollH: {
         color: 'white', 
         fontSize: 15,
-        marginLeft: 20,
+        marginHorizontal: 20,
         marginBottom: 18,
 
     }
