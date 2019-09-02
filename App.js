@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from "react-navigation";
 
 
@@ -6,8 +6,8 @@ import setTable from './src/screen/setTable'
 import listMenu from './src/screen/listMenu'
 import viewBill from './src/screen/viewBill'
 import pay from './src/screen/pay'
-// import { Provider } from 'react-redux'
-// import store from './src/_redux/store'
+import { Provider } from 'react-redux'
+import store from './src/_redux/store'
 
 
 //stack
@@ -43,18 +43,17 @@ const billPriv = createStackNavigator(
   }
 )
 
-const mainNav = createAppContainer(createSwitchNavigator({
-  billPub: {
-    screen: billPub
-  },
-
-  billPriv: {
-    screen: billPriv
+const Mainnav = createAppContainer (createSwitchNavigator(
+  {
+  billPub : billPub,
+  billPriv : billPriv
   }
-})
 )
+);
 
-export default mainNav
+// const mainCont = createAppContainer(mainNav);
+
+// export default mainNav
 
 // const App = () => {
 //   return (
@@ -64,3 +63,15 @@ export default mainNav
 //   )
 // }
 // export default App
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Mainnav />
+      </Provider>
+    )
+  }
+}
+
+export default App;

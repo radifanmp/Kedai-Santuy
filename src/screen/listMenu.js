@@ -2,10 +2,48 @@ import React, { Component } from 'react';
 import {  Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconFA from 'react-native-vector-icons/FontAwesome5';
-import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity  } from "react-native";
+import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity, FlatList  } from "react-native";
 
 
 class listMenu extends React.Component{
+
+    constructor(props){
+        super(props)
+
+            this.state = {
+                categori : [
+                    {    
+                        id: "1",
+                        name: "Promo"
+                    },
+
+                    {
+                        id: "2",
+                        name: "Appertize"
+                    },
+
+                    {
+                        id: "3",
+                        name: "Main Course"
+                    },
+
+                    {
+                        id: "4",
+                        name: "Dessert"
+                    },
+
+                    {
+                        id: "5",
+                        name: "Addition"
+                    },
+
+                    {
+                        id: "6",
+                        name: "Drink"
+                    },
+                ]
+            }
+    }
 
     render(){
         return(
@@ -14,7 +52,7 @@ class listMenu extends React.Component{
 
             <StatusBar  backgroundColor="#487eb0" barStyle="light-content"/>
             <View  style={{backgroundColor: '#40739e', height: 30, flexDirection: 'row', alignItems: 'space-between'}}>
-                <Text style={{color: 'white', marginTop:5, marginLeft: 10, fontSize:20}}>#10</Text>
+                <Text style={{color: 'white', marginTop:5, marginLeft: 10, fontSize:20}}>{this.props.navigation.getParam('tableNum')}</Text>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 90 , fontSize:20}}>Kedai Santuy</Text>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 80 , fontSize:20}}>12:00</Text>
             </View>
@@ -22,7 +60,10 @@ class listMenu extends React.Component{
             <View style={{backgroundColor: '#40739e', height: 50, flexDirection: 'row', alignItems: 'space-between'}} >
 
             {/* //Menu */}
-            <ScrollView horizontal={true}>
+            <FlatList>
+
+            </FlatList>
+            {/* <ScrollView horizontal={true}>
             
             <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Promo</Text>
@@ -47,7 +88,7 @@ class listMenu extends React.Component{
             <TouchableOpacity onPress={this._onPressButton}>
             <Text  style={styles.scrollH}>Drink</Text>
             </TouchableOpacity>
-            </ScrollView>
+            </ScrollView> */}
             
 
             </View>

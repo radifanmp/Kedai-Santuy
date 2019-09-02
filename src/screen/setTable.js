@@ -30,7 +30,7 @@ class setTable extends React.Component{
 
             <TextInput style={styles.input} placeholderTextColor="rgba(255,255,255,0.9)" keyboardType='number-pad' onChangeText={(text) => {this.setState({table:text})}}></TextInput>
 
-            <Button style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu')}}><Text style={{color: '#487eb0', fontSize: 15}}>Submit</Text></Button>
+            <Button style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu',{tableNum:this.state.table})}}><Text style={{color: '#487eb0', fontSize: 15}}>Submit</Text></Button>
 
             </View>
 
