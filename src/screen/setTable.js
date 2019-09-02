@@ -5,6 +5,14 @@ import { TextInput } from 'react-native-gesture-handler';
 
 class setTable extends React.Component{
 
+    constructor()
+	  {
+	      super()
+	      this.state = {
+	          table:'',
+	      }
+	  }
+
     render(){
         return(
             <ScrollView backgroundColor="#40739e">
@@ -20,7 +28,7 @@ class setTable extends React.Component{
             
             <Text style={{color: 'white', fontSize: 20, marginTop: 15}}>Masukan Nomer Meja</Text>
 
-            <TextInput style={styles.input} placeholderTextColor="rgba(255,255,255,0.9)" keyboardType='number-pad'></TextInput>
+            <TextInput style={styles.input} placeholderTextColor="rgba(255,255,255,0.9)" keyboardType='number-pad' onChangeText={(text) => {this.setState({table:text})}}></TextInput>
 
             <Button style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu')}}><Text style={{color: '#487eb0', fontSize: 15}}>Submit</Text></Button>
 

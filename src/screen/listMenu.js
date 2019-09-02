@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { } from 'react-native-paper';
-import {StyleSheet, StatusBar, View, ScrollView, Image, Text, Button, TouchableOpacity  } from "react-native";
+import {  Button } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/AntDesign';
+import IconFA from 'react-native-vector-icons/FontAwesome5';
+import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity  } from "react-native";
 
 
-class setTable extends React.Component{
+class listMenu extends React.Component{
 
     render(){
         return(
-            <ScrollView>
-             
             
+            <View style={{flex: 1}}>
+
             <StatusBar  backgroundColor="#487eb0" barStyle="light-content"/>
             <View  style={{backgroundColor: '#40739e', height: 30, flexDirection: 'row', alignItems: 'space-between'}}>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 10, fontSize:20}}>#10</Text>
@@ -50,6 +52,7 @@ class setTable extends React.Component{
 
             </View>
 
+            <ScrollView>
              <View style={styles.container}>
 
              <View style={styles.content}>
@@ -99,23 +102,29 @@ class setTable extends React.Component{
             
 
              </View>
+             </ScrollView>
+             
 
-             <View  style={{backgroundColor: '#487eb0', height: 100, flexDirection: 'row', alignItems: 'space-between'}}>
+            <View  style={{backgroundColor: '#487eb0', height: 140, width: '100%', flexDirection: 'row', alignItems: 'space-between'}}>
 
-             {/* Orderlist */}
-                <View style={{backgroundColor: '#FFF', height: 75, width: '45%', borderRadius: 2, position: 'absolute', marginVertical:10, marginLeft: 15}}>
-                </View>
+            {/* Orderlist */}
+            <View style={{backgroundColor: '#FFF', height: 75, width: '92%', borderRadius: 2, position: 'absolute', marginVertical:10, marginLeft: 15}}>
+            </View>
 
-                <View style={{marginLeft:'55%', marginVertical: '14%', border}}><Text style={{color: 'white'}}>Konfirmasi</Text></View>
+            <Button mode="contained" color="#2ecc71" style={styles.button} onPress={() => console.log('Pressed')}><Icon name="checkcircleo" size={18} color="#FFF"></Icon></Button>
+
+            <Button mode="contained" color="#e67e22" style={styles.button} onPress={() => {this.props.navigation.navigate('pay')}}><Icon name="bells" size={18} color="#FFF"></Icon></Button>
+
+            <Button mode="contained" color="#1abc9c" style={styles.button} onPress={() => {this.props.navigation.navigate('viewBill')}}><IconFA name="file-invoice-dollar" size={18} color="#FFF"></IconFA></Button>
 
             </View>
-             
-             </ScrollView>
+
+            </View>
         )
     }
 }
 
-export default setTable
+export default listMenu
 
 
 const styles = StyleSheet.create({
@@ -141,5 +150,22 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginBottom: 18,
 
-    }
+    },
+
+    button: {
+        marginBottom: 30,
+        // width: '50%',
+        // alignItems: 'center',
+        // backgroundColor: 'green',
+        borderRadius: 5,
+        marginBottom: 10,
+        marginHorizontal: 29
+      },
+      buttonText: {
+        textAlign: 'center',
+        padding: 20,
+        color: 'white',
+        fontSize: 10
+      },
+      
 })
