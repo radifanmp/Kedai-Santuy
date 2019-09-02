@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text,Button} from 'react-native-paper';
-import {StyleSheet, StatusBar, View, ScrollView, } from "react-native";
+import {StyleSheet, StatusBar, View, ScrollView, Image } from "react-native";
 import { TextInput } from 'react-native-gesture-handler';
 
 class setTable extends React.Component{
@@ -18,13 +18,13 @@ class setTable extends React.Component{
             <ScrollView backgroundColor="#40739e">
             <StatusBar backgroundColor="#487eb0" barStyle="light-content"/>
 
-            <View style={{marginVertical: '50%'}}>
+            {/* <View style={{marginVertical: '50%'}}> */}
+
 
             <View style={styles.container}>
 
-            <Text style={{color: 'white', fontSize: 30}}>Kedai Santuy</Text>
-
             <View style={styles.content}>
+            <Image source={require('../img/icon.png')} style={{width: 250, height: 250, justifyContent: 'center', alignItems: 'center', flex:1}}/>
             
             <Text style={{color: 'white', fontSize: 20, marginTop: 15}}>Masukan Nomer Meja</Text>
 
@@ -36,7 +36,7 @@ class setTable extends React.Component{
 
             </View>
 
-            </View>
+            {/* </View> */}
             </ScrollView>
         )
     }
@@ -54,10 +54,10 @@ const styles = StyleSheet.create({
 
     content: {
         alignItems: 'center', 
-        borderWidth: 0.5, 
+        // borderWidth: 0.5, 
         borderRadius: 4, 
         borderColor: '#FFF',
-        marginVertical: 15,
+        marginVertical: 90,
     },
 
     input: {
