@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Api from '../assets/restApi'
 
-export const addTransaction = (data) => {
+export const addtransaction = (data) => {
     return {
       type: 'ADD_TRANSACTION',
       payload: axios({
@@ -15,7 +15,7 @@ export const addTransaction = (data) => {
       })
     }
   }
-  export const getTransaction = (transactionId) => {
+  export const gettransaction = (transactionId) => {
     return {
       type: 'GET_TRANSACTION',
       payload: axios.get(`${Api.host}/transactionOrder/${transactionId}`)

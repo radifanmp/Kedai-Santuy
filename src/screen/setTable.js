@@ -2,16 +2,37 @@ import React, { Component } from 'react';
 import { Text,Button} from 'react-native-paper';
 import {StyleSheet, StatusBar, View, ScrollView, Image } from "react-native";
 import { TextInput } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux'
+
+
+import {addtransaction} from '../_actions/transaction'
+
+
 
 class setTable extends React.Component{
 
-    constructor()
-	  {
-	      super()
-	      this.state = {
-	          table:'',
-	      }
-	  }
+    state = {
+        textNumbertbl: ""
+    }
+
+    actionText = (text) => {
+        this.setState({
+            textNumbertbl: text
+        })
+    }
+
+    actionSub = async () => {
+        await AsyncStorage.setItem('tableNumber', `${this.state.textNumbertbl}`)
+
+        await this.props.dispatch(addtransaction({
+            tableNumber: this.state.textNumbertbl,
+            isPaid:false
+        }))
+        await AsyncStorage.setItem('transactionId', `${this.props.transaction.dataItem.data.id}`)
+        await this.props.navigation.navigate('billPriv')
+        console.log(this.state.textNumbertbl)
+    }
 
     render(){
         return(
@@ -28,9 +49,9 @@ class setTable extends React.Component{
             
             <Text style={{color: 'white', fontSize: 20, marginTop: 15}}>Masukan Nomer Meja</Text>
 
-            <TextInput style={styles.input} placeholderTextColor="rgba(255,255,255,0.9)" keyboardType='number-pad' onChangeText={(text) => {this.setState({table:text})}}></TextInput>
+            <TextInput style={styles.input} placeholderTextColor="rgba(255,255,255,0.9)" keyboardType='number-pad' onChangeText={this.actionText}></TextInput>
 
-            <Button style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu',{tableNum:this.state.table})}}><Text style={{color: '#487eb0', fontSize: 15}}>Submit</Text></Button>
+            <Button style={styles.button} onPress={this.actionSub}><Text style={{color: '#487eb0', fontSize: 15}}>Submit</Text></Button>
 
             </View>
 
@@ -42,7 +63,14 @@ class setTable extends React.Component{
     }
 }
 
-export default setTable
+const mapStateToProps = (state) => {
+    return {
+        transaction: state.transaction
+    }
+}
+
+
+export default connect(mapStateToProps)(setTable)
 
 
 

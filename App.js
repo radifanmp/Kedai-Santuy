@@ -50,20 +50,6 @@ const Mainnav = createAppContainer (createSwitchNavigator(
   }
 )
 );
-
-// const mainCont = createAppContainer(mainNav);
-
-// export default mainNav
-
-// const App = () => {
-//   return (
-//     <Provider store={store}>
-//       <mainNav />
-//     </Provider>
-//   )
-// }
-// export default App
-
 class App extends Component {
   render() {
     return (

@@ -3,13 +3,13 @@ import Api from '../assets/restApi'
 
 export const getMenu = () => {
   return {
-    type:'GET_MENUS',
+    type:'GET_MENU',
     payload : axios.get(`${Api.host}/menus`)
   }
 }
-export const getMenuWhereCategory = (categoryId) => {
+export const getMenuWhereCategori = (categoriId) => {
   return {
-    type:'GET_CATEGORI_MENU',
-    payload : axios.get(`${Api.host}/categorI/menu/${categoryId}`)
+    type:'GET_CATEGORI_MENUS',
+    payload : axios.get(`${Api.host}/categori/menu/${categoriId}`)
   }
 }

@@ -4,7 +4,7 @@ initialState = {
     isLoading: true
   }
   
-  export default Transaction = (state = initialState, action) => {
+  export default transaction = (state = initialState, action) => {
     switch (action.type) {
       //Untuk Transaction ADD 
       case 'ADD_TRANSACTION_PENDING':
