@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Text,Button} from 'react-native-paper';
 import {StyleSheet, View, Image} from "react-native";
-
+import IconFA from 'react-native-vector-icons/FontAwesome5';
 class pay extends React.Component{
 
     render(){
         return(
+            
             <View style={{flex:1, backgroundColor: '#40739e'}}>
+
+            <Button mode="contained" color="#40739e" style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu')}}><IconFA name="arrow-left" size={18} color="#FFF"></IconFA></Button>
 
                 <View style={styles.container}>
 
@@ -43,6 +46,13 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         color: '#FFF'
-    }
+    },
+
+    button: {
+        marginBottom: 30,
+        width: '10%',
+        borderRadius: 5,
+        marginTop: 5,
+      },
 }
 )

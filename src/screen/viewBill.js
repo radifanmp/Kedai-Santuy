@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
 import { Text,Button} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {StyleSheet, StatusBar, View } from "react-native";
+import {StyleSheet, StatusBar, View, ImageBackground } from "react-native";
+import IconFA from 'react-native-vector-icons/FontAwesome5';
 
 class viewBill extends React.Component{
 
     render(){
         return(
             <View style={{flex:1}}>
+                
+                <Button mode="contained" color="#FFF" style={styles.button} onPress={() => {this.props.navigation.navigate('listMenu')}}><IconFA name="arrow-left" size={18} color="#000"></IconFA></Button>
 
                 <View style={styles.container}>
+
+
+                <ImageBackground opacity={0.1} source={require('../img/icon.png')} style={{width: 250, height: 250, alignItems: 'center', flex:1, position: 'absolute', marginVertical: '50%' }}>
+
+                </ImageBackground>
 
                     
                     <Text style={{fontSize: 18, fontWeight: 'bold', textAlign: 'center',}}>02 September 2019: 13:11{"\n"}</Text>
                     
                     <View style={{backgroundColor: '#778ca3', height:1, width: '100%', marginVertical:15}}></View>
 
-                    <View style={{flexDirection: 'row', alignItems: 'space-between'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'space-between',  marginVertical: 5}}>
                     <Text style={{fontSize: 17,fontWeight: 'bold', textAlign: 'center', color: 'red', marginLeft: 15}}>Waiting</Text>
                     <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Nasi Goreng mas Roni</Text>
-                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>5.000.000</Text>
+                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Rp 15.000</Text>
                     </View>
 
-                    <View style={{backgroundColor: '#778ca3', height:1, width: '100%', marginVertical:15}}></View>
+                    <View style={{flexDirection: 'row', alignItems: 'space-between',  marginVertical: 5}}>
+                    <Text style={{fontSize: 17,fontWeight: 'bold', textAlign: 'center', color: 'red', marginLeft: 15}}>Waiting</Text>
+                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Iceland</Text>
+                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Rp 250.000</Text>
+                    </View>
+
+                    <View style={{flexDirection: 'row', alignItems: 'space-between',  marginVertical: 5}}>
+                    <Text style={{fontSize: 17,fontWeight: 'bold', textAlign: 'center', color: 'red', marginLeft: 15}}>Waiting</Text>
+                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Sugar Sweet Cake</Text>
+                    <Text style={{fontSize: 17, textAlign: 'center', marginLeft: 15}}>Rp 224.000</Text>
+                    </View>
+
+                    {/* <View style={{backgroundColor: '#778ca3', height:1, width: '100%', marginVertical:15}}></View> */}
+
+                    <View style={{backgroundColor: '#778ca3', height:1, width: '100%', marginTop: 15, marginBottom: '63%'}}></View>
 
                     <View style={{flexDirection: 'row', alignItems: 'space-between', backgroundColor: '#d1d8e0', height: 130, width: '100%', borderRadius: 5}}>
                      
@@ -40,15 +62,15 @@ class viewBill extends React.Component{
                     </View>
 
                     <View style={{flex:1}}>
-                    <Text style={styles.bill}>5.000.000</Text>
+                    <Text style={styles.bill}>Rp 489.000</Text>
 
-                    <Text style={styles.bill}>0</Text>
+                    <Text style={styles.bill}>Rp 0</Text>
 
-                    <Text style={styles.bill}>275.000</Text>
+                    <Text style={styles.bill}>Rp 26.895</Text>
 
-                    <Text style={styles.bill}>250.000</Text>
+                    <Text style={styles.bill}>Rp 48.900</Text>
 
-                    <Text style={{textAlign: 'left', marginVertical: 5, marginHorizontal: 15, fontWeight: 'bold'}}>5.750.000</Text>
+                    <Text style={{textAlign: 'left', marginVertical: 5, marginHorizontal: 15, fontWeight: 'bold'}}>Rp 564.795</Text>
                     </View>
 
                     </View>
@@ -81,7 +103,15 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginVertical: 5,
         marginHorizontal: 15
-    }
+    },
+
+    button: {
+        marginBottom: 30,
+        width: '10%',
+        borderRadius: 5,
+        marginTop: 5,
+        position: 'absolute'
+      },
 }
 )
 

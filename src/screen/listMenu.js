@@ -10,6 +10,7 @@ import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity, 
 
 import { getCategori } from '../_actions/categori'
 import { getMenu, getMenuWhereCategori } from '../_actions/menu'
+import restApi, { convertToRupiah } from '../assets/restApi'
 
 
 class listMenu extends React.Component{
@@ -84,7 +85,7 @@ class listMenu extends React.Component{
                 onPress: () => console.log('Cancel Pressed'),
                 style: 'cancel',
                 },
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                {text: 'OK', onPress: () => {this.props.navigation.navigate('viewBill')}},
             ],
             {cancelable: false},
             );
@@ -99,7 +100,7 @@ class listMenu extends React.Component{
             <View  style={{backgroundColor: '#40739e', height: 30, flexDirection: 'row', alignItems: 'space-between'}}>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 10, fontSize:20}}>#{this.state.tableNumber}</Text>
                 <Text style={{color: 'white', marginTop:5, marginLeft: 90 , fontSize:20}}>Kedai Santuy</Text>
-                <Text style={{color: 'white', marginTop:5, marginLeft: 80 , fontSize:20}}>12:00</Text>
+                <Text style={{color: 'white', marginTop:5, marginLeft: 80 , fontSize:20}}>20:38</Text>
             </View>
 
             <View style={{backgroundColor: '#40739e', height: 50, flexDirection: 'row', alignItems: 'space-between'}} >
@@ -132,7 +133,7 @@ class listMenu extends React.Component{
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => alert(item.id)}>   
+                    <TouchableOpacity onPress={() => alert('This Is '+item.name)}>   
                 <View style={styles.content}>
                 <View style={{alignItems: 'center', marginTop: 15}}>
                 <Image source={{uri: item.image}} style={{ width: '100%', height: 250}}/>
@@ -140,7 +141,7 @@ class listMenu extends React.Component{
                 
                 <View style={{marginLeft: 10 }}>
                 <Text style={{color: '#487eb0', fontSize: 20, marginTop: 15, fontWeight: 'bold'}}>{item.name}</Text>
-                <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', marginBottom: 15}}>{item.price}</Text>
+                <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', marginBottom: 15}}>{convertToRupiah(item.price)}</Text>
                 </View>
                 </View>
                 </TouchableOpacity>
