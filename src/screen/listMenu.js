@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {  Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconFA from 'react-native-vector-icons/FontAwesome5';
-import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity, FlatList, ActivityIndicator } from "react-native";
+import {StyleSheet, StatusBar, View, ScrollView, Image, Text, TouchableOpacity, FlatList, Alert} from "react-native";
 
 
 import { getCategori } from '../_actions/categori'
@@ -13,37 +13,12 @@ import { getMenu, getMenuWhereCategori } from '../_actions/menu'
 
 
 class listMenu extends React.Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-          cater:[
-          {
-            id:"1",
-            name: "Promo"
-          },
-          {
-            id:"2",
-            name: "Drink"
-          },
-          {
-            id:"3",
-            name: "Dessert"
-          },
-          {
-            id:"4",
-            name: "Appertizer"
-          },
-           
-          ]
-        };
-      }
-
     state = {
         tableNumber: 0,
         transactionId: 0,
         initNameCategori: 'All',
         startMenus: [],
+        order: [],
         toogleStarted: ''
     }
 
@@ -92,8 +67,27 @@ class listMenu extends React.Component{
         // this.cekMenu()
       }
 
-      addOrder = async ()  => {
-       
+      sendMenu = (value)=> {
+          alert(value)
+          this.setState({
+              order : [...this.state.order,...value]
+          })
+      }
+
+      confirm() {
+        Alert.alert(
+            'Confirmasi Pesanan',
+            'Apakah Anda Yakin Dengan Pesanan  Anda',
+            [
+                {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+                },
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            {cancelable: false},
+            );
       }
 
     render(){
@@ -133,14 +127,15 @@ class listMenu extends React.Component{
               <ActivityIndicator></ActivityIndicator>
               : */}
                 <FlatList
+                style={{width: '100%'}}
                 data = {this.props.menu.dataItem}
                 showsVerticalScrollIndicator={false}
-                // keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <TouchableOpacity onPress={this._onPressButton}>   
+                    <TouchableOpacity onPress={() => alert(item.id)}>   
                 <View style={styles.content}>
                 <View style={{alignItems: 'center', marginTop: 15}}>
-                <Image source={{uri: item.image}} style={{ width: '100%', height: 100}}/>
+                <Image source={{uri: item.image}} style={{ width: '100%', height: 250}}/>
                 </View>
                 
                 <View style={{marginLeft: 10 }}>
@@ -161,9 +156,10 @@ class listMenu extends React.Component{
 
             {/* Orderlist */}
             <View style={{backgroundColor: '#FFF', height: 75, width: '92%', borderRadius: 2, position: 'absolute', marginVertical:10, marginLeft: 15}}>
+                <Text>{this.state.order}</Text>
             </View>
 
-            <Button mode="contained" color="#2ecc71" style={styles.button} onPress={() => console.log('Pressed')}><Icon name="checkcircleo" size={18} color="#FFF"></Icon></Button>
+            <Button mode="contained" color="#2ecc71" style={styles.button} onPress={() => this.confirm()}><Icon name="checkcircleo" size={18} color="#FFF"></Icon></Button>
 
             <Button mode="contained" color="#e67e22" style={styles.button} onPress={() => {this.props.navigation.navigate('pay')}}><Icon name="bells" size={18} color="#FFF"></Icon></Button>
 
@@ -202,7 +198,7 @@ const styles = StyleSheet.create({
         borderRadius: 4, 
         borderColor: '#487eb0',
         marginVertical: 15,
-        width: '100%'
+        width: '100%',
     },
 
     scrollH: {

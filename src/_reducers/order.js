@@ -1,106 +1,37 @@
-initialState = {
-  dataItem: '',
-  isLoading: true,
-  subTotalOrder: 0
-}
-
-export default order = (state = initialState, action) => {
+export default function orders(state = initialState, action) {
   switch (action.type) {
-    //Untuk Order Master ADD
-    case 'ADD_ORDER_PENDING':
+    case "GET_ORDERS":
       return {
         ...state,
-        isLoading: true
       }
-      
-    case 'ADD_ORDER_FULFILLED':
+    case "ADD_ORDERS":
       return {
         ...state,
-        dataItem: action.payload.data,
-        isLoading: false
+        data: state.data.concat(action.payload)
       }
-      
-    case 'ADD_ORDER_REJECTED':
+      case "CLEAR_ORDERS":
+        return {
+          ...state,
+          data : [],
+        }
+    case "EDIT_ORDERS":
+      const newTodo = state.data.map(item => {
+        if (item.menuId === action.payload.menuId) {
+          return action.payload
+        }
+        return item
+      })
       return {
         ...state,
-        dataItem: null,
-        isLoading: false
+        data: newTodo
       }
-      
-
-    //Untuk Order Master GET
-    case 'GET_ORDER_PENDING':
+    case "REMOVE_ORDERS":
+      const removeTodo = state.data.filter(item => item.menuId !== action.payload)
       return {
         ...state,
-        isLoading: false
+        data : removeTodo
       }
-      
-    case 'GET_ORDER_FULFILLED':
-      return {
-        ...state,
-        dataItem: action.payload.data,
-        isLoading: false
-      }
-      
-    case 'GET_ORDER_REJECTED':
-      return {
-        ...state,
-        isLoading: false
-      }
-      
-
-    //Untuk Order Master Edit
-    case 'EDIT_ORDER_PENDING':
-      return {
-        ...state,
-        isLoading: true
-      }
-      
-    case 'EDIT_ORDER_FULFILLED':
-      return {
-        ...state,
-        dataItem: action.payload.data,
-        isLoading: false
-      }
-      
-    case 'EDIT_ORDER_REJECTED':
-      return {
-        ...state,
-        dataItem: null,
-        isLoading: false
-      }
-      
-
-    //Untuk Order Master Remove
-    case 'REMOVE_ORDER_PENDING':
-      return {
-        ...state,
-        isLoading: true
-      }
-      
-    case 'REMOVE_ORDER_FULFILLED':
-      return {
-        ...state,
-        isLoading: false
-      }
-      
-    case 'REMOVE_ORDER_REJECTED':
-      return {
-        ...state,
-        isLoading: false
-      }
-      
-      
-    //Get Sub total
-    case 'GET_SUBTOTAL':
-      return {
-        ...state,
-        subTotalOrder : action.payload.subTotal
-      }
-      
-
     default:
       return state
-      
   }
 }

@@ -1,44 +1,28 @@
-import axios from 'axios'
-import Api from '../assets/restApi'
+export const getOrders = () => ({
+  type: "GET_ORDERS"
+})
+export const clearOrders = () => ({
+  type: "CLEAR_ORDERS"
+})
 
-export const addOrder = (data) => {
-  return {
-    type: 'ADD_ORDER',
-    payload: axios({
-      url: `${Api.host}/order`,
-      method: 'POST',
-      data: data,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-  }
-}
-export const editOrder = (id,data) => {
-  return {
-    type: 'EDIT_ORDER',
-    payload: axios({
-      url: `${Api.host}/order/${id}`,
-      method: 'PATCH',
-      data: data,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-  }
-}
-export const deleteOrder = (id) => {
-  return {
-    type: 'REMOVE_ORDER',
-    payload: axios({
-      url: `${Api.host}/order/${id}`,
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-  }
+export const addOrders = value => ({
+  type: 'ADD_ORDERS',
+  payload: value
+})
+
+export const editOrders = value => ({
+  type: 'EDIT_ORDERS',
+  payload: value
+})
+
+export const removeOrders = id => ({
+  type: 'REMOVE_ORDERS',
+  payload: id
+})
+
+const initialState = {
+  isLoading: false,
+  data: [],
+  sentData : [],
+  error: null
 }
