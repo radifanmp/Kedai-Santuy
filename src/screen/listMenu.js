@@ -135,9 +135,9 @@ class listMenu extends React.Component{
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => alert('This Is '+item.name)}>   
                 <View style={styles.content}>
-                <View style={{alignItems: 'center', marginTop: 15}}>
-                <Image source={{uri: item.image}} style={{ width: '100%', height: 250}}/>
-                </View>
+                {/* <View style={{alignItems: 'center', marginTop: 15, height: 100}}> */}
+                <Image source={{uri: item.image}} style={{ width: '100%', height: 125}}/>
+                {/* </View> */}
                 
                 <View style={{marginLeft: 10 }}>
                 <Text style={{color: '#487eb0', fontSize: 20, marginTop: 15, fontWeight: 'bold'}}>{item.name}</Text>
@@ -157,12 +157,13 @@ class listMenu extends React.Component{
 
             {/* Orderlist */}
             <View style={{backgroundColor: '#FFF', height: 75, width: '92%', borderRadius: 2, position: 'absolute', marginVertical:10, marginLeft: 15}}>
-                <Text>{this.state.order}</Text>
+                <Text>This is your order</Text>
+
             </View>
 
             <Button mode="contained" color="#2ecc71" style={styles.button} onPress={() => this.confirm()}><Icon name="checkcircleo" size={18} color="#FFF"></Icon></Button>
 
-            <Button mode="contained" color="#e67e22" style={styles.button} onPress={() => {this.props.navigation.navigate('pay')}}><Icon name="bells" size={18} color="#FFF"></Icon></Button>
+            <Button mode="contained" color="#1abc9c" style={styles.button} onPress={() => {this.props.navigation.navigate('pay')}}><Icon name="bells" size={18} color="#FFF"></Icon></Button>
 
             <Button mode="contained" color="#1abc9c" style={styles.button} onPress={() => {this.props.navigation.navigate('viewBill')}}><IconFA name="file-invoice-dollar" size={18} color="#FFF"></IconFA></Button>
 
@@ -191,6 +192,7 @@ const styles = StyleSheet.create({
       padding: 15,
       width: '100%',
       alignItems: 'center', 
+      height: 100
     },
 
     content: {
@@ -200,6 +202,7 @@ const styles = StyleSheet.create({
         borderColor: '#487eb0',
         marginVertical: 15,
         width: '100%',
+        height: 200
     },
 
     scrollH: {
