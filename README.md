@@ -19,7 +19,7 @@ Aplikasi ini masih tahap test , dengan kata lain masih terdapat fitur yang belum
 </p>
 
 ## Demo
-<img src="https://github.com/radifanmp/Kedai-Santuy/blob/master/src/screenshoot/animation.gif.mp4" width="200" height="350" alt="Order History"/>
+<img src="https://github.com/radifanmp/Kedai-Santuy/blob/master/src/screenshoot/animation.gif" width="200" height="350" alt="Order History"/>
 
 ## Fitur 
 * Terdapat list menu berdasarkan kategori
