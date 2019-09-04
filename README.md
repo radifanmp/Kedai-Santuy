@@ -1,5 +1,3 @@
-##Kedayi Santuy
-
 ## Keterangan Aplikasi
 Nama aplikasi ini adalah "Kedayi Santuy" , Aplikasi komputasi dari pemesanan makanan di restoran. (Point Of Sale).
 <br>
